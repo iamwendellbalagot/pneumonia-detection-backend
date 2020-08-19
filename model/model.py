@@ -1,10 +1,8 @@
 import numpy as np
-import os
 
 import tensorflow as tf
 import tensorflow.keras.layers as Layers
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.preprocessing import image
 
 
