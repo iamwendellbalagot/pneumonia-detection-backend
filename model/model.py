@@ -7,6 +7,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.preprocessing import image
 
+
 class Detection:
     def __init__(self):
         self.base_model = tf.keras.applications.MobileNetV2(input_shape=(150,150,3),
@@ -30,7 +31,15 @@ class Detection:
         img = tf.expand_dims(img, 0)
         return img
     
+    def read_img(self, path):
+        img = image.load_img(path, target_size=(150,150))
+        img = image.img_to_array(img)
+        img = tf.cast(img, tf.float32)
+        img = img /255.
+        img = tf.expand_dims(img, 0)
+        return img
+    
     def predict(self, img):
-        tensor = self.process_image(img)
+        tensor = self.read_img(img)
         prediction = self.model.predict(tensor).flatten()[0]
         return prediction

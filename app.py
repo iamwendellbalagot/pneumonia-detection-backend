@@ -18,9 +18,11 @@ def process_image():
     im_b64 = payload['image'][0]
     im_binary = base64.b64decode(im_b64)
     buf = io.BytesIO(im_binary)
-    print(detection_model.predict(buf))
+    
+    result = float(detection_model.predict(buf))
+    result = {'msg': 'success', 'prediction': result}
 
-    return jsonify({'msg': 'success'})
+    return jsonify(result)
 
 
 if __name__ == "__main__":
