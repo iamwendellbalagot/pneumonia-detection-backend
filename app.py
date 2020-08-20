@@ -14,8 +14,9 @@ def process_image():
     #pred = detection_model.predict('im-received.jpg')
     #print(file.stream)
     #print(pred)
-    payload = request.form.to_dict(flat=False)
-    im_b64 = payload['image'][0]
+    payload = request.get_json()
+    print('PAYLOAD: ',type(payload['image']))
+    im_b64 = payload['image']
     im_binary = base64.b64decode(im_b64)
     #buf = io.BytesIO(im_binary)
     
