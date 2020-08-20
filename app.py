@@ -17,9 +17,9 @@ def process_image():
     payload = request.form.to_dict(flat=False)
     im_b64 = payload['image'][0]
     im_binary = base64.b64decode(im_b64)
-    buf = io.BytesIO(im_binary)
+    #buf = io.BytesIO(im_binary)
     
-    result = float(detection_model.predict(buf))
+    result = float(detection_model.predict(im_binary))
     result = {'msg': 'success', 'prediction': result}
 
     return jsonify(result)
