@@ -2,11 +2,9 @@ import numpy as np
 import base64
 import io
 
-
 import tensorflow as tf
 import tensorflow.keras.layers as Layers
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.preprocessing import image
 
 
 class Detection:
@@ -32,14 +30,6 @@ class Detection:
         img = tf.expand_dims(img, 0)
         return img
     
-    def read_img(self, path):
-        img = image.load_img(path, target_size=(150,150))
-        print(img)
-        img = image.img_to_array(img, dtype= np.float32)
-        #img = tf.cast(img, tf.float32)
-        img = img /255.
-        img = tf.expand_dims(img, 0)
-        return img
     
     def predict(self, img):
         tensor = self.process_image(img)
