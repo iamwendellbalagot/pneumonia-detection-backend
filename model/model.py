@@ -1,4 +1,7 @@
 import numpy as np
+import base64
+import io
+
 
 import tensorflow as tf
 import tensorflow.keras.layers as Layers
