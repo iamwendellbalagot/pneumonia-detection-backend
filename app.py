@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 from model.model import Detection
 import base64
 import io
@@ -6,6 +7,8 @@ import io
 detection_model = Detection()
 
 app = Flask(__name__)
+CORS(app)
+
 
 @app.route("/predict", methods=["POST"])
 def process_image():
